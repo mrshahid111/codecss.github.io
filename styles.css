@@ -1,0 +1,96 @@
+@font-face {
+  font-family: articul;
+src: url("./Webfont/ArticulatCF-Normal.eot");
+src: url("./Webfont/ArticulatCF-Normal.woff") format("woff"),
+url("./OTF/ArticulatCF-Regular.otf") format("opentype"),
+
+}
+body{
+  font-family: articul;
+}
+.container{
+  
+  
+ max-width:1000px;
+ padding:20px;
+
+ 
+ }
+ .cnt{
+  margin : 20px ;
+  /* border: 2px solid #111213; */
+ }
+ .txt{
+   font-size: 20px;
+   font-weight: bold;
+ }
+ .inpt{
+  border-radius: 0;
+  border: none;
+  background-color: #efefef;
+  color: #5d5d5d;
+  font-size: 14px;
+  padding: 10px 12px;
+  width: 100%;
+ }
+ .inpt_row{
+   margin:8px 0;
+ }
+ .inpt_row_1{
+  margin:10px 0;
+}
+form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+form label {
+  margin: 5px 10px 5px 0;
+}
+form input {
+  margin: 2px;
+  max-width: 80px;
+  padding: 5px;
+}
+.r_green{
+  font-weight: bold;
+}
+
+.r_green .col{
+  background-color: rgb(86, 161, 86);
+
+
+  margin: 0 2px;
+  }
+.r_blue{
+ 
+  font-weight: bold;
+ 
+  
+  }
+  .r_blue .col{
+    background-color: blue;
+    margin: 0 2px;
+  
+    }
+  .r_yellow{
+  
+ 
+    font-weight: bold;
+    }
+    .r_yellow .col{
+      background-color: yellow;
+      margin: 0 2px;
+    
+      
+      }
+@media (max-width: 800px) {
+  form input {
+     margin: 10px 0;
+  }
+  form {
+     flex-direction: column;
+     align-items: stretch;
+  }
+}
+ 

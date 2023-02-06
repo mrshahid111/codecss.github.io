@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="css/select2.min.css" />
+
+  <title>Calculator</title>
+  <script src="js/jquery.min.js"></script>
+  <script src="./js/autoNumeric.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script>
+    $(document).ready(function () {
+      $(".auto").autoNumeric("init");
+      cal();
+    });
+
+  </script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <div class="container cnt">
+    <div class="row">
+      <div class="col text-center">
+        <h2>Calculator</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-10">
+        Select or enter a goal
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Distance :</div>
+      <div class="col-md-3">
+        <form>
+
+
+          <select id="distance_opt" onchange="cal()">
+
+            <option disabled value="fg">Popular Distances</option>
+            <option value="1.6">1 mi</option>
+            <option value="5">5 km</option>
+            <option value="10">10 km</option>
+            <option value="20.96">Half Marathon</option>
+            <option value="41.92">Marathon</option>
+            <option disabled value="fg">ALL DISTANCES</option>
+            <option value="1.5">1500 m</option>
+            <option value="1.6">1600 m</option>
+            <option value="2">2000 m</option>
+            <option value="2">1.5 mi</option>
+            <option value="3">3000 m</option>
+            <option value="3.2">3200 m</option>
+            <option value="3.2">2 mi</option>
+            <option value="4">4000 m</option>
+            <option value="4.8">3 mi</option>
+            <option value="5">5000 m</option>
+            <option value="6">6000 m</option>
+            <option value="6.4">4 mi</option>
+            <option value="8">8000 m</option>
+            <option value="8">5 mi</option>
+            <option value="10">10 km</option>
+            <option value="12">12 km</option>
+            <option value="15">15 km</option>
+            <option value="16">10 mi</option>
+            <option value="20">20 km</option>
+            <option value="20.96">Half Marathon</option>
+            <option value="24">15 mi</option>
+            <option value="25">25 km</option>
+            <option value="30">30 km</option>
+            <option value="32">20 mi</option>
+            <option value="41.92">Marathon</option>
+            <option value="50">50 km</option>
+            <option value="80">50 mi</option>
+            <option value="100">100 km</option>
+            <option value="160">100 mi</option>
+
+
+
+
+          </select>
+
+
+        </form>
+
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 15px;">
+      <div class="col-md-2">Time :</div>
+      <div class="col-md-10">
+        <form>
+          <input type="text" id="hrs" class="auto" value="0" data-v-min="0" data-v-max="100" data-p-sign="s"
+            onkeyup="cal()" data-a-sign="  hrs" />
+          <h3>:</h3>
+          <input type="text" id="mins" class="auto" value="5" data-v-min="0" data-v-max="59" data-p-sign="s"
+          onkeyup="cal()" data-a-sign="  mins" />
+          <h3>:</h3>
+          <input type="text" id="secs" class="auto" value="0" data-v-min="0" data-v-max="100" data-p-sign="s"
+          onkeyup="cal()" data-a-sign="  secs" />
+        </form>
+      </div>
+
+
+    </div>
+    <div class="row" style="margin-top: 15px;">
+      <div class="col-md-2">Race Pace :</div>
+      <div class="col-md-3">
+
+        <span id="pace"> </span><span id="pace_unit"> Per km</span>
+      </div>
+      <div class="col-md-3">
+
+        <span id="pace_mile"> </span><span id="pace_unit"> Per Mile</span>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6" style=margin:5px;font-size:1.2rem;">
+        <div class="container">
+          <div class="row ">
+            <div class="col">
+
+            </div>
+            <div class="col" style="font-weight:bold;font-size:1.2rem;">
+              Per Km
+            </div>
+            <div class="col" style="font-weight:bold">
+              Per Mile
+            </div>
+          </div>
+          <div class="row r_green">
+            <div class="col">
+              120%
+            </div>
+            <div class="col" id="perc120">00:02:30</div>
+            <div class="col" id="percmile120">00:04:00</div>
+
+          </div>
+
+          <div class="row  r_green">
+            <div class="col">
+              119%
+            </div>
+            <div class="col" id="perc119">00:02:31</div>
+            <div class="col" id="percmile119">00:04:03</div>
+          </div>
+          <div class="row r_green">
+            <div class="col">
+              118%
+            </div>
+            <div class="col" id="perc118">00:02:33</div>
+            <div class="col" id="percmile118">00:04:06</div>
+          </div>
+
+          <div class="row r_green">
+            <div class="col">
+              117%
+            </div>
+            <div class="col" id="perc117">00:02:35</div>
+            <div class="col" id="percmile117">00:04:09</div>
+          </div>
+
+          <div class="row r_green">
+            <div class="col">
+              116%
+            </div>
+            <div class="col" id="perc116">00:02:37</div>
+            <div class="col" id="percmile116">00:04:12</div>
+          </div>
+          <div class="row r_green">
+            <div class="col">
+              115%
+            </div>
+            <div class="col" id="perc115">00:02:39</div>
+            <div class="col" id="percmile115">00:04:15</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              114%
+            </div>
+            <div class="col" id="perc114">00:02:41</div>
+            <div class="col" id="percmile114">00:04:18</div>
+          </div>
+          <div class="row r_blue">
+            <div class="col">
+              113%
+            </div>
+            <div class="col" id="perc113">00:02:43</div>
+            <div class="col" id="percmile113">00:04:21</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              112%
+            </div>
+            <div class="col" id="perc112">00:02:45</div>
+            <div class="col" id="percmile112">00:04:24</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              111%
+            </div>
+            <div class="col" id="perc111">00:02:46</div>
+            <div class="col" id="percmile111">00:04:27</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              110%
+            </div>
+            <div class="col" id="perc110">00:02:48</div>
+            <div class="col" id="percmile110">00:04:30</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              109%
+            </div>
+            <div class="col" id="perc109">00:02:50</div>
+            <div class="col" id="percmile109">00:04:33</div>
+          </div>
+          <div class="row r_blue">
+            <div class="col">
+              108%
+            </div>
+            <div class="col" id="perc108">00:02:52</div>
+            <div class="col" id="percmile108">00:04:36</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              107%
+            </div>
+            <div class="col" id="perc107">00:02:54</div>
+            <div class="col" id="percmile107">00:04:39</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              106%
+            </div>
+            <div class="col" id="perc106">00:02:56</div>
+            <div class="col" id="percmile106">00:04:42</div>
+          </div>
+
+          <div class="row   r_yellow">
+            <div class="col">
+              105%
+            </div>
+            <div class="col" id="perc105">00:02:58</div>
+            <div class="col" id="percmile105">00:04:45</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              104%
+            </div>
+            <div class="col" id="perc104">00:03:00</div>
+            <div class="col" id="percmile104">00:04:48</div>
+          </div>
+          <div class="row r_yellow">
+            <div class="col">
+              103%
+            </div>
+            <div class="col" id="perc103">00:03:01</div>
+            <div class="col" id="percmile103">00:04:51</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              102%
+            </div>
+            <div class="col" id="perc102">00:03:03</div>
+            <div class="col" id="percmile102">00:04:54</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              101%
+            </div>
+            <div class="col" id="perc101">00:03:05</div>
+            <div class="col" id="percmile101">00:04:57</div>
+          </div>
+
+          <div class="row" style="font-size:1.2rem ;font-weight:bold ;">
+            <div class="col" style=" margin: 0 2px;background-color: orange;">
+              Race Pace
+            </div>
+            <div class="col" id="perc100" style=" margin: 0 2px;background-color: orange;">00:03:07</div>
+            <div class="col" style=" margin: 0 2px;background-color: orange;" id="percmile100">00:05:00</div>
+
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              99%
+            </div>
+            <div class="col" id="perc99">00:03:09</div>
+            <div class="col" id="percmile99">00:05:03</div>
+          </div>
+          <div class="row r_yellow">
+            <div class="col">
+              98%
+            </div>
+            <div class="col" id="perc98">00:03:11</div>
+            <div class="col" id="percmile98">00:05:06</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              97%
+            </div>
+            <div class="col" id="perc97">00:03:13</div>
+            <div class="col" id="percmile97">00:05:09</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              96%
+            </div>
+            <div class="col" id="perc96">00:03:15</div>
+            <div class="col" id="percmile96">00:05:12</div>
+          </div>
+
+          <div class="row r_yellow">
+            <div class="col">
+              95%
+            </div>
+            <div class="col" id="perc95">00:03:16</div>
+            <div class="col" id="percmile95">00:05:15</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              94%
+            </div>
+            <div class="col" id="perc94">00:03:18</div>
+            <div class="col" id="percmile94">00:05:18</div>
+          </div>
+          <div class="row r_blue">
+            <div class="col">
+              93%
+            </div>
+            <div class="col" id="perc93">00:03:20</div>
+            <div class="col" id="percmile93">00:05:21</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              92%
+            </div>
+            <div class="col" id="perc92">00:03:22</div>
+            <div class="col" id="percmile92">00:05:24</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              91%
+            </div>
+            <div class="col" id="perc91">00:03:24</div>
+            <div class="col" id="percmile91">00:05:27</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              90%
+            </div>
+            <div class="col" id="perc90">00:03:26</div>
+            <div class="col" id="percmile90">00:05:30</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              89%
+            </div>
+            <div class="col" id="perc89">00:03:28</div>
+            <div class="col" id="percmile89">00:05:33</div>
+          </div>
+          <div class="row r_blue">
+            <div class="col">
+              88%
+            </div>
+            <div class="col" id="perc88">00:03:30</div>
+            <div class="col" id="percmile88">00:05:36</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              87%
+            </div>
+            <div class="col" id="perc87">00:03:31</div>
+            <div class="col" id="percmile87">00:05:39</div>
+          </div>
+
+          <div class="row r_blue">
+            <div class="col">
+              86%
+            </div>
+            <div class="col" id="perc86">00:03:33</div>
+            <div class="col" id="percmile86">00:05:42</div>
+          </div>
+
+          <div class="row r_green">
+            <div class="col">
+              85%
+            </div>
+            <div class="col" id="perc85">00:03:35</div>
+            <div class="col" id="percmile85">00:05:45</div>
+          </div>
+
+          <div class="row r_green" "="">
+        <div class=" col">
+            84%
+          </div>
+          <div class="col" id="perc84">00:03:37</div>
+          <div class="col" id="percmile84">00:05:48</div>
+        </div>
+        <div class="row r_green" "="">
+        <div class=" col">
+          83%
+        </div>
+        <div class="col" id="perc83">00:03:39</div>
+        <div class="col" id="percmile83">00:05:51</div>
+      </div>
+
+      <div class="row r_green" "="">
+        <div class=" col">
+        82%
+      </div>
+      <div class="col" id="perc82">00:03:41</div>
+      <div class="col" id="percmile82">00:05:54</div>
+    </div>
+
+    <div class="row r_green" "="">
+        <div class=" col">
+      81%
+    </div>
+    <div class="col" id="perc81">00:03:43</div>
+    <div class="col" id="percmile81">00:05:57</div>
+  </div>
+
+  <div class="row r_green">
+    <div class="col">
+      80%
+    </div>
+    <div class="col" id="perc80">00:03:45</div>
+    <div class="col" id="percmile80">00:06:00</div>
+  </div>
+
+
+
+
+
+
+  </div>
+  </div>
+
+  <div class="col-md-6">
+
+  </div>
+
+  </div>
+
+
+
+
+  </div>
+  <script src="./js/select2.min.js"></script>
+  <script>
+    $("#distance_opt").select2({
+      placeholder: "select or enter a goal",
+      allowClear: true
+    });
+  </script>
+  <script src="./js/cal.js"></script>
+</body>
+
+</html>
